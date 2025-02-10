@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
+
+body {
+    font-family: 'Workbench';
+}
+
+.pokemon-card {
+    width: 300px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f6f6f6;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+.pokemon-card img {
+    width: 100%;
+    border-bottom: 2px solid #ddd;
+}
+.pokemon-card .card-header {
+    background-color: #ffcc00;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.pokemon-card .card-body {
+    padding: 20px;
+}
+.pokemon-card .pokemon-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.pokemon-card .type {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #ff9900;
+    color: white;
+    font-weight: bold;
+}
+.pokemon-card .stats {
+    margin-top: 20px;
+    font-size: 1.1em;
+}
