@@ -28,6 +28,10 @@ async function cargarTarjetas() {
         `;
         
         contenedor.appendChild(card);
+        const button = card.querySelector('.aboutDigi');
+        button.addEventListener('click', () => {
+            window.location.href = `/digimon.html?id=${digimon.id}`;;
+        });
     });
 
 
@@ -41,7 +45,3 @@ async function cargarTarjetas() {
 
 
 
-const button = card.querySelector('.aboutDigi');
-button.addEventListener('click', () => {
-    window.location.href = `../moreinfo?id=${id}`;;
-});
