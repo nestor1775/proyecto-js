@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function cargarTarjeta() {
-
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     console.log(id)
@@ -14,36 +13,36 @@ async function cargarTarjeta() {
         const response = await fetch(`https://digi-api.com/api/v1/digimon/${id}`);
         const digimon = await response.json();
         console.log(digimon)
-        const contenedor = document.getElementById('tarjetasDigi');
+        const contenedor = document.getElementById('mainBox');
     
     if (!contenedor) {
         throw new Error("No se encontró el contenedor");
     }
 
-    
 
     contenedor.innerHTML = "";
     const card = document.createElement('div');
-    card.classList.add('Tarjeta');
+    card.classList.add('TarjetaProfile');
     card.setAttribute('data-tilt', '');
-    
     card.innerHTML = `
     <img src="${digimon.images[0].href}" alt="${digimon.name}">
-    <p>${digimon.name}</p>
-    <button class="aboutDigi" data-id="${digimon.id}" >Aprende sobre mí</button>
-    
+    `;
+
+    const text = document.createElement('div');
+    text.classList.add('textProfie');
+    text.setAttribute('data-tilt', '');
+    text.innerHTML = `
+    <p>${digimon.descriptions[1].description}</p>
     `;
     
     contenedor.appendChild(card);
+    contenedor.appendChild(text);
     const button = card.querySelector('.aboutDigi');
-    button.addEventListener('click', () => {
-    window.location.href = `/digimon.html?id=${digimon.id}`;
-
-    });
+    
 
 
       // Necesito agregar esto para que la librerira de las tarjetas funcione
-    VanillaTilt.init(document.querySelectorAll(".Tarjeta"));
+    VanillaTilt.init(document.querySelectorAll(".TarjetaProfile"));
     } catch (error) {
     console.error("Error cargando tarjetas:", error);
     }
