@@ -2,27 +2,43 @@ document.addEventListener("DOMContentLoaded", async function () {
     await cargarLevels();
 });
 
-
 async function cargarLevels() {
     try {
-        const response = await fetch("https://digi-api.com/api/v1/level");
-        const data = await response.json();
-  
+        let allLevels = []; 
+        let nextPageUrl = "https://digi-api.com/api/v1/type";
+    
+        while (nextPageUrl) {
+            const response = await fetch(nextPageUrl);
+            const data = await response.json();
+    
+
+            allLevels = allLevels.concat(data.content.fields);
+    
+            
+            nextPageUrl = null; 
+
+            if (data.pageable.nextPage) {
+                nextPageUrl = data.pageable.nextPage; // Asigna el valor de nextPage si existe
+}
+        }
+
         const contenedorDescription = document.getElementById("descriptionContainer");
         const levelsContainer = document.getElementById("levelsContainer");
 
-        if (!contenedorDescription) {
-            throw new Error("No se encontró descriptionContainer");
+        if (!contenedorDescription || !levelsContainer) {
+            throw new Error("problemitas");
         }
 
+
         contenedorDescription.innerHTML = "";
-        levelsContainer.innerHTML= "";
+        levelsContainer.innerHTML = "";
+
 
         contenedorDescription.innerHTML = `
-            <p>${data.content.description}</p>
+            <p>An Evolution Stage, also referred to as Level and Generation, is the level of development a Digimon is at</p>
         `;
 
-        data.content.fields.forEach(level => {
+        allLevels.forEach(level => {
             const levelLink = document.createElement('a');
             levelLink.href = "#"; 
             levelLink.classList.add("level-link");
@@ -36,26 +52,20 @@ async function cargarLevels() {
                     
                     Swal.fire({
                         title: level.name,
-                        text: `${infolevel.description}`,
+                        text: `${infolevel.description || "No hay información disponible."}`,
                         icon: "info",
                         confirmButtonText: "Cerrar"
-                });
+                    });
                     
                 } catch (error) {
-                    
+                    console.error("Error");
                 }
-                
             });
         
             levelsContainer.appendChild(levelLink);
         });
 
-
-
-
-
-        contenedor.appendChild(levelCard);
     } catch (error) {
-        console.error("Error cargando niveles:", error);
+        console.error(error);
     }
 }

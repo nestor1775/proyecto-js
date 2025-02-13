@@ -2,10 +2,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     await cargarLevels();
 });
 
-
 async function cargarLevels() {
     try {
-        const response = await fetch("https://digi-api.com/api/v1/level");
+        const response = await fetch("https://digi-api.com/api/v1/attribute");
         const data = await response.json();
   
         const contenedorDescription = document.getElementById("descriptionContainer");
