@@ -2,6 +2,30 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarTarjetas();
 });
 
+// botones Menu
+document.getElementById("btnLevels").addEventListener("click", () => {
+    window.location.href = "/levels.html";
+});
+
+document.getElementById("btnAttributes").addEventListener("click", () => {
+    window.location.href = "/attributes.html";
+});
+
+document.getElementById("btnTypes").addEventListener("click", () => {
+    window.location.href = "/types.html";
+});
+
+document.getElementById("btnFields").addEventListener("click", () => {
+    window.location.href = "/fields.html";
+});
+
+
+menuButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = `/stats.html`;
+    });
+});
+
 async function cargarTarjetas() {
     try {
         const response = await fetch('https://digi-api.com/api/v1/digimon?pageSize=20');
