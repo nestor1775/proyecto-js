@@ -3,7 +3,7 @@
 body {
     font-family: 'Workbench';
 }
-#cabecera{
+#header{
   margin-bottom: 5rem;
 }
 /* index */
@@ -62,7 +62,7 @@ body {
 
   .TarjetaProfile {
     margin:2rem ;
-    background: linear-gradient(135deg, #000000, #ffffff);
+    background: linear-gradient(135deg, #ff7c7c, #fe2e50);
     color: white;
     display: flex;
     flex-direction: column;
@@ -72,17 +72,22 @@ body {
     font-size: 18px;
     font-weight: bold;
     border-radius: 10px;
-    padding-left: 5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     padding: 15px;
   }
   
   .TarjetaProfile img {
 
     width:100%;
-
     border-radius: 2%;
     flex-shrink: 0;
     margin-bottom: 10px;
+  }
+
+  #PrE{
+
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function cargarTarjetas() {
     try {
-        const response = await fetch('https://digi-api.com/api/v1/digimon?pageSize=15');
+        const response = await fetch('https://digi-api.com/api/v1/digimon?pageSize=105');
         const data = await response.json();
     
         const contenedor = document.getElementById('tarjetasDigi');
@@ -23,7 +23,7 @@ async function cargarTarjetas() {
         card.innerHTML = `
         <img src="${digimon.image}" alt="${digimon.name}">
         <p>${digimon.name}</p>
-        <button class="aboutDigi" data-id="${digimon.id}" >Aprende sobre mí</button>
+        <button class="aboutDigi" data-id="${digimon.id}" >Learn More</button>
         
         `;
         

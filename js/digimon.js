@@ -14,6 +14,7 @@ async function cargarTarjeta() {
         const digimon = await response.json();
         console.log(digimon)
         const contenedor = document.getElementById('mainBox');
+        const contenedorPrE=document.getElementById('PrE')
     
     if (!contenedor) {
         throw new Error("No se encontró el contenedor");
@@ -31,12 +32,58 @@ async function cargarTarjeta() {
     const text = document.createElement('div');
     text.classList.add('textProfie');
     text.setAttribute('data-tilt', '');
-    text.innerHTML = `
-    <p>${digimon.descriptions[1].description}</p>
-    `;
+
+    if (digimon.descriptions && digimon.descriptions[1] && digimon.descriptions[1].description) {
+        
+        text.innerHTML = `
+            <p>${digimon.descriptions[1].description}</p>
+
+        `;
+    } else {
+       
+        text.innerHTML = `
+            <p>I'm a fan made</p> 
+        `;
+    }
+
+     // Div para evoluciones anteriores
+     const priorEvolutionsDiv = document.createElement('div');
+     priorEvolutionsDiv.classList.add('priorEvolutionsDiv');
+     priorEvolutionsDiv.classList.add('row', 'd-flex', 'justify-content-center');
+     const priorEvolutionsTitle = document.createElement('h4');
+     priorEvolutionsTitle.innerText = "Previous Evolutions:";
+     priorEvolutionsDiv.appendChild(priorEvolutionsTitle);
+
+     if (digimon.priorEvolutions && digimon.priorEvolutions.length > 0) {
+         digimon.priorEvolutions.forEach(evolution => {
+             const evolutionCard = document.createElement('div');
+             evolutionCard.classList.add('col-md-3');
+             evolutionCard.classList.add('TarjetaProfile');
+             evolutionCard.setAttribute('data-tilt', '');
+
+             evolutionCard.innerHTML = `
+                 <img src="${evolution.image}" alt="${evolution.digimon}">
+                 <p>${evolution.digimon}</p>
+                 <button class="aboutDigi" data-id="${evolution.id}">Learn More</button>
+             `;
+
+             priorEvolutionsDiv.appendChild(evolutionCard);
+             const evolutionButton = evolutionCard.querySelector('.aboutDigi');
+             evolutionButton.addEventListener('click', () => {
+                 window.location.href = `/digimon.html?id=${evolution.id}`;
+             });
+         });
+     } else {
+         const noPriorEvolutionsMessage = document.createElement('p');
+         noPriorEvolutionsMessage.innerText = "No prior evolutions found.";
+         priorEvolutionsDiv.appendChild(noPriorEvolutionsMessage);
+     }
+
+    
     
     contenedor.appendChild(card);
     contenedor.appendChild(text);
+    contenedorPrE.appendChild(priorEvolutionsDiv);
     const button = card.querySelector('.aboutDigi');
     
 
