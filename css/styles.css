@@ -13,7 +13,7 @@ body {
     min-height: 280px;
     width: 200px;
     height: 280px;
-    background: linear-gradient(135deg, #ff7c7c, #eae2e2);
+    background: linear-gradient(50deg, #ff2a2a, #353535);
     color: white;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@ body {
 
   .TarjetaProfile {
     margin:2rem ;
-    background: linear-gradient(135deg, #ff7c7c, #fe2e50);
+    background: linear-gradient(50deg, #ff2a2a, #353535);
     color: white;
     display: flex;
     flex-direction: column;
