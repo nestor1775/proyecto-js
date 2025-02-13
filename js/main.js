@@ -28,7 +28,7 @@ menuButtons.forEach(button => {
 
 async function cargarTarjetas() {
     try {
-        const response = await fetch('https://digi-api.com/api/v1/digimon?pageSize=20');
+        const response = await fetch('https://digi-api.com/api/v1/digimon?pageSize=30');
         const data = await response.json();
     
         const contenedor = document.getElementById('tarjetasDigi');

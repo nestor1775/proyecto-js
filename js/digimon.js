@@ -40,44 +40,41 @@ async function cargarTarjeta() {
 
         `;
     } else {
-       
         text.innerHTML = `
             <p>I'm a fan made</p> 
         `;
     }
 
-     // Div para evoluciones anteriores
-     const priorEvolutionsDiv = document.createElement('div');
-     priorEvolutionsDiv.classList.add('priorEvolutionsDiv');
-     priorEvolutionsDiv.classList.add('row', 'd-flex', 'justify-content-center');
-     const priorEvolutionsTitle = document.createElement('h4');
-     priorEvolutionsTitle.innerText = "Previous Evolutions:";
-     priorEvolutionsDiv.appendChild(priorEvolutionsTitle);
+        // Div para evoluciones anteriores
+        const priorEvolutionsDiv = document.createElement('div');
+        priorEvolutionsDiv.classList.add('priorEvolutionsDiv');
+        priorEvolutionsDiv.classList.add('row', 'd-flex', 'justify-content-center');
+        const priorEvolutionsTitle = document.createElement('h4');
+        priorEvolutionsTitle.innerText = "Previous Evolutions:";
+        priorEvolutionsDiv.appendChild(priorEvolutionsTitle);
 
-     if (digimon.priorEvolutions && digimon.priorEvolutions.length > 0) {
-         digimon.priorEvolutions.forEach(evolution => {
-             const evolutionCard = document.createElement('div');
-             evolutionCard.classList.add('col-md-3');
-             evolutionCard.classList.add('TarjetaProfile');
-             evolutionCard.setAttribute('data-tilt', '');
+        if (digimon.priorEvolutions && digimon.priorEvolutions.length > 0) {
+            digimon.priorEvolutions.forEach(evolution => {
+                const evolutionCard = document.createElement('div');
+                evolutionCard.classList.add('col-md-3');
+                evolutionCard.classList.add('TarjetaProfile');
+                evolutionCard.setAttribute('data-tilt', '');
 
-             evolutionCard.innerHTML = `
-                 <img src="${evolution.image}" alt="${evolution.digimon}">
-                 <p>${evolution.digimon}</p>
-                 <button class="aboutDigi" data-id="${evolution.id}">Learn More</button>
-             `;
+                evolutionCard.innerHTML = `
+                    <img src="${evolution.image}" alt="${evolution.digimon}">
+                    <p>${evolution.digimon}</p>
+                    <button class="aboutDigi" data-id="${evolution.id}">Learn More</button>
+                `;
 
-             priorEvolutionsDiv.appendChild(evolutionCard);
-             const evolutionButton = evolutionCard.querySelector('.aboutDigi');
-             evolutionButton.addEventListener('click', () => {
-                 window.location.href = `/digimon.html?id=${evolution.id}`;
-             });
-         });
-     } else {
-         const noPriorEvolutionsMessage = document.createElement('p');
-         noPriorEvolutionsMessage.innerText = "No prior evolutions found.";
-         priorEvolutionsDiv.appendChild(noPriorEvolutionsMessage);
-     }
+                priorEvolutionsDiv.appendChild(evolutionCard);
+                const evolutionButton = evolutionCard.querySelector('.aboutDigi');
+                evolutionButton.addEventListener('click', () => {
+                    window.location.href = `/digimon.html?id=${evolution.id}`;
+                });
+            });
+        } else {
+            alert("Problemas")
+        }
 
     
     
