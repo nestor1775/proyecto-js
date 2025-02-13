@@ -93,3 +93,11 @@ body {
     text-align: center;
   }
 
+  .digiElements{
+    display: flex;
+  }
+
+  .digiElements p{
+    margin: 2rem;
+  }
+

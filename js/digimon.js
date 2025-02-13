@@ -33,6 +33,17 @@ async function cargarTarjeta() {
     text.classList.add('textProfie');
     text.setAttribute('data-tilt', '');
 
+    const type = document.createElement('div'); 
+    type.classList.add('digiElements');
+    type.innerHTML = `
+    <p>"Type ${digimon.types[0].type}"</p>
+    <p>"Attribute ${digimon.attributes[0].attribute}"</p>
+    <p>"level ${digimon.levels[0].level}"</p>
+    `;
+
+    
+    
+
     if (digimon.descriptions && digimon.descriptions[1] && digimon.descriptions[1].description) {
         
         text.innerHTML = `
@@ -80,6 +91,7 @@ async function cargarTarjeta() {
     
     contenedor.appendChild(card);
     contenedor.appendChild(text);
+    contenedor.appendChild(type);
     contenedorPrE.appendChild(priorEvolutionsDiv);
     const button = card.querySelector('.aboutDigi');
     
