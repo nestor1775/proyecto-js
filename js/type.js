@@ -35,7 +35,7 @@ async function cargarLevels() {
 
 
         contenedorDescription.innerHTML = `
-            <p>An Evolution Stage, also referred to as Level and Generation, is the level of development a Digimon is at</p>
+            <p>"A Digimon's Type indicates what sort of category a Digimon's specific species belongs to. Many of these simply indicate what a Digimon is based on and only come into play under certain situations - some Digimon may have a certain advantage or disadvantage to a Digimon of another type. Or an item will work on a Digimon of one type or not the other."</p> <br>
         `;
 
         allLevels.forEach(level => {
@@ -52,7 +52,7 @@ async function cargarLevels() {
                     
                     Swal.fire({
                         title: level.name,
-                        text: `${infolevel.description || "No hay información disponible."}`,
+                        text: `${infolevel.description || "La api tiene el campo de descripcion, pero todos estan vacios. lo dejo aqui para explicarlo"}`,
                         icon: "info",
                         confirmButtonText: "Cerrar"
                     });

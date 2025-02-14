@@ -35,10 +35,13 @@ async function cargarTarjeta() {
 
     const type = document.createElement('div'); 
     type.classList.add('digiElements');
+    const typeText = digimon.types?.[0]?.type ? `Type: ${digimon.types[0].type}` : "Type: Unknown";
+    const attributeText = digimon.attributes?.[0]?.attribute ? `Attribute: ${digimon.attributes[0].attribute}` : "Attribute: Unknown";
+    const levelText = digimon.levels?.[0]?.level ? `Level: ${digimon.levels[0].level}` : "Level: Unknown";
     type.innerHTML = `
-    <p>"Type ${digimon.types[0].type}"</p>
-    <p>"Attribute ${digimon.attributes[0].attribute}"</p>
-    <p>"level ${digimon.levels[0].level}"</p>
+    <p>${typeText}</p>
+    <p>${attributeText}</p>
+    <p>${levelText}</p>
     `;
 
     
@@ -84,7 +87,7 @@ async function cargarTarjeta() {
                 });
             });
         } else {
-            alert("Problemas")
+            priorEvolutionsDiv.innerHTML += `<p>Este perro no tiene antecesor</p>`;
         }
 
     

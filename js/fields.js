@@ -34,7 +34,7 @@ async function cargarFields() {
         levelsContainer.innerHTML = "";
 
         contenedorDescription.innerHTML = `
-            <p>An Evolution Stage, also referred to as Level and Generation, is the level of development a Digimon is at</p>
+            <p>A Digimon's Field is an overall branching group of Digimon that each one belongs to. Digimon can have more than one field or none.</p> <br>
         `;
 
 
